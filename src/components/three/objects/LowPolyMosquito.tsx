@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import * as THREE from 'three';
+import type * as THREE from 'three';
 
 export interface MosquitoAnatomyRefs {
   group: THREE.Group | null;

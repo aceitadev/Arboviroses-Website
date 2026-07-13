@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Cpu } from 'lucide-react';
 import type { DiseaseId } from '@/types';
 import { getDataset } from '@/data/diseases';
 import { forecast, ILLUSTRATIVE_LABEL } from '@/data/content';
@@ -20,7 +21,7 @@ export function S6Forecast() {
   const [disease, setDisease] = useState<DiseaseId>('dengue');
   const dataset = getDataset(disease);
   const reduced = useReducedMotion();
-  const { ref, inView } = useInView<HTMLDivElement>({ once: true, threshold: 0.2 });
+  const { ref, inView } = useInView<HTMLDivElement>({ once: true, threshold: 0.15 });
 
   return (
     <SectionShell id="previsao" labelledBy="previsao-title" fullHeight={false}>
@@ -43,27 +44,43 @@ export function S6Forecast() {
         </Reveal>
       </div>
 
-      <div ref={ref} className="mt-8">
+      <div ref={ref} className="mt-10">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <DiseaseToggle value={disease} onChange={setDisease} label={forecast.selectLabel} />
           <Badge>{ILLUSTRATIVE_LABEL}</Badge>
         </div>
 
+        <div className="mt-5 rounded-3xl border border-line bg-white/80 p-6 shadow-sm backdrop-blur-md">
+          <div className="mb-4 flex flex-wrap items-center justify-between gap-4 border-b border-line/60 pb-4">
+            <ChartLegend />
+            <span className="flex items-center gap-1.5 font-mono text-xs font-semibold text-science">
+              <Cpu className="h-3.5 w-3.5" />
+              SÉRIE TEMPORAL 52 SEMANAS • INTERV. CONFIANÇA 95%
+            </span>
+          </div>
+
+          <div className="mt-2">
+            <ForecastChart dataset={dataset} reveal={inView} reduced={reduced} />
+          </div>
+
+          <div className="mt-6">
+            <ChartSummary dataset={dataset} />
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <div className="rounded-2xl border border-science/25 bg-science/5 p-5">
+            <h3 className="font-display text-sm font-bold uppercase tracking-wider text-science-deep">
+              Propósito Operacional do Algoritmo
+            </h3>
+            <p className="mt-2 text-sm leading-relaxed text-ink sm:text-base">
+              {forecast.purpose}
+            </p>
+          </div>
+        </div>
+
         <div className="mt-4">
-          <ChartLegend />
-        </div>
-
-        <div className="mt-3">
-          <ForecastChart dataset={dataset} reveal={inView} reduced={reduced} />
-        </div>
-
-        <ChartSummary dataset={dataset} />
-
-        <div className="mt-6 grid gap-3">
           <Disclaimer>{forecast.disclaimer}</Disclaimer>
-          <p className="max-w-prose rounded-2xl border border-science/20 bg-science/5 px-4 py-3 text-sm leading-relaxed text-ink sm:text-base">
-            {forecast.purpose}
-          </p>
         </div>
       </div>
     </SectionShell>
