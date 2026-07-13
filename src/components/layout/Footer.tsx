@@ -10,7 +10,6 @@ export function Footer() {
         <div className="flex items-center gap-2.5">
           <BrandMark className="h-6 w-6" />
           <div>
-            <span className="block font-display text-sm font-bold text-ink">{site.productName}</span>
             <span className="block text-xs text-ink-faint">
               {site.projectTitle}
             </span>

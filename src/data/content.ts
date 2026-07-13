@@ -201,7 +201,7 @@ export const about = {
   eyebrow: 'Sobre a pesquisa & código aberto',
   title: site.projectTitle,
   teamLabel: 'Pesquisadores & Integrantes',
-  advisorLabel: 'Orientação Científica',
+  advisorLabel: 'Orientação',
   institutionLabel: 'Instituição & Turma',
   codeLabel: 'Código & Modelo Preditivo',
   codeDescription:

@@ -21,9 +21,6 @@ export function S1Opening() {
             <span className="mr-1.5 inline-block h-2 w-2 rounded-full bg-prevent animate-pulse" />
             Projeto de Pesquisa Científica
           </Badge>
-          <span className="rounded-full border border-line/80 bg-white/70 px-3 py-1 font-display text-xs font-semibold tracking-wide text-ink-soft backdrop-blur-sm">
-            {site.productName}
-          </span>
         </div>
 
         <h1
