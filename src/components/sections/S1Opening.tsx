@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowDownRight } from 'lucide-react';
-import { opening, site } from '@/data/content';
+import { opening } from '@/data/content';
 import { Badge } from '@/components/ui/Badge';
 import { ScrollHint } from '@/components/ui/ScrollHint';
 import { SectionShell } from '@/components/sections/SectionShell';
