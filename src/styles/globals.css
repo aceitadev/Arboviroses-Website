@@ -26,12 +26,16 @@
 
   * {
     -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   html {
     scroll-behavior: smooth;
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   body {
@@ -44,6 +48,8 @@
     text-rendering: optimizeLegibility;
     /* Evita rolagem horizontal acidental em qualquer breakpoint. */
     overflow-x: hidden;
+    -webkit-user-select: none;
+    user-select: none;
   }
 
   h1,
